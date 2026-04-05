@@ -6,9 +6,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Matthias"/>
-<meta name="theme-color" content="#fafafa"/>
-<title>MonAppli</title>
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231a1a1a'/><text y='.9em' font-size='60' x='50%' text-anchor='middle'>✦</text></svg>"/>
+<meta name="theme-color" content="#f7f7f5"/>
+<title>Matthias</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231a1a1a'/><path d='M36 10 C36 10 64 27 64 40 C64 53 36 63 36 76 C36 89 64 94 64 94' fill='none' stroke='%23e07c3a' stroke-width='4.5' stroke-linecap='round'/><path d='M64 10 C64 10 36 27 36 40 C36 53 64 63 64 76 C64 89 36 94 36 94' fill='none' stroke='%23e9a83a' stroke-width='4.5' stroke-linecap='round'/><line x1='36' y1='24' x2='64' y2='24' stroke='%2352b788' stroke-width='3.5' stroke-linecap='round'/><line x1='40' y1='37' x2='60' y2='37' stroke='%235b8dd9' stroke-width='3.5' stroke-linecap='round'/><line x1='36' y1='52' x2='64' y2='52' stroke='%2352b788' stroke-width='3.5' stroke-linecap='round'/><line x1='40' y1='67' x2='60' y2='67' stroke='%235b8dd9' stroke-width='3.5' stroke-linecap='round'/><line x1='36' y1='80' x2='64' y2='80' stroke='%2352b788' stroke-width='3.5' stroke-linecap='round'/><circle cx='36' cy='10' r='5' fill='%23e07c3a'/><circle cx='64' cy='10' r='5' fill='%23e9a83a'/><circle cx='36' cy='94' r='5' fill='%23e9a83a'/><circle cx='64' cy='94' r='5' fill='%23e07c3a'/></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
@@ -20,92 +20,76 @@
   --blue:#1a4fa0;--blue-bg:#eef3fc;--blue-mid:#5b8dd9;
   --amber:#8a5c00;--amber-bg:#fdf4e3;--amber-mid:#e9a83a;
   --purple:#5c3d8f;--purple-bg:#f3eeff;--purple-mid:#9b72cf;
-  --teal:#0f6e56;--teal-bg:#e1f5ee;
-  --pink:#7c3d62;--pink-bg:#fbeaf0;
   --red:#b91c1c;--red-bg:#fef2f2;
   --rad:16px;--rad-sm:10px;--rad-xs:7px;
   font-family:'DM Sans',sans-serif;
-  --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
-#app{max-width:430px;margin:0 auto;padding:0 0 calc(72px + var(--safe-bottom));min-height:100vh;position:relative}
+#app{max-width:430px;margin:0 auto;padding:0 0 calc(80px + env(safe-area-inset-bottom,0px));min-height:100vh}
 
-/* ---- BOTTOM NAV ---- */
 .bottom-nav{
   position:fixed;bottom:0;left:50%;transform:translateX(-50%);
   width:100%;max-width:430px;
-  background:rgba(247,247,245,0.92);
+  background:rgba(247,247,245,0.94);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-top:1px solid var(--bg3);
-  padding:8px 0 calc(8px + var(--safe-bottom));
+  padding-top:10px;
+  padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));
   display:flex;z-index:100;
 }
-.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer;padding:4px 2px;color:var(--fg4);font-family:inherit;font-size:10px;font-weight:400;transition:color .15s;letter-spacing:.01em}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;cursor:pointer;padding:2px 4px 0;color:var(--fg4);font-family:inherit;font-size:10px;font-weight:400;letter-spacing:.01em;transition:color .15s}
 .nav-item.active{color:var(--fg);font-weight:500}
-.nav-ico{font-size:23px;line-height:1;transition:transform .15s}
-.nav-item.active .nav-ico{transform:scale(1.1)}
+.nav-ico{font-size:22px;line-height:1}
 
-/* ---- PAGES ---- */
-.page{display:none;padding:0 1rem;padding-top:calc(env(safe-area-inset-top,0px) + 1rem)}
+.page{display:none;padding:0 1rem;padding-top:calc(env(safe-area-inset-top,0px) + 1.1rem)}
 .page.active{display:block}
-.page-title{font-size:28px;font-weight:600;letter-spacing:-.6px;margin-bottom:.25rem}
+.page-title{font-size:27px;font-weight:600;letter-spacing:-.6px;margin-bottom:.2rem}
 .page-sub{font-size:13px;color:var(--fg3);margin-bottom:1.25rem}
 
-/* ---- CARDS ---- */
 .card{background:var(--surface);border:1px solid var(--bg3);border-radius:var(--rad);padding:1.1rem 1.2rem;margin-bottom:.75rem}
 .card-label{font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--fg3);margin-bottom:.75rem}
 
-/* ---- FORM ---- */
 .fi{background:var(--bg2);border:1px solid transparent;border-radius:var(--rad-sm);padding:11px 13px;font-size:14px;color:var(--fg);font-family:inherit;outline:none;width:100%;transition:border-color .15s;-webkit-appearance:none}
 .fi:focus{border-color:var(--bg3);background:var(--surface)}
 .frow{display:flex;gap:8px}
-.btn{width:100%;padding:13px;background:var(--fg);color:#fff;border:none;border-radius:var(--rad-sm);font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;letter-spacing:.01em;transition:opacity .15s}
+.btn{width:100%;padding:13px;background:var(--fg);color:#fff;border:none;border-radius:var(--rad-sm);font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:opacity .15s}
 .btn:active{opacity:.75}
-.btn-ghost{background:transparent;color:var(--fg2);border:1px solid var(--bg3)}
 .icon-btn{background:var(--fg);color:#fff;border:none;border-radius:var(--rad-sm);width:40px;height:40px;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.del{background:none;border:none;cursor:pointer;color:var(--fg4);font-size:20px;padding:0 3px;line-height:1;transition:color .1s}
-.del:active{color:var(--fg2)}
+.del{background:none;border:none;cursor:pointer;color:var(--fg4);font-size:20px;padding:0 3px;line-height:1}
 
-/* ---- PROGRESS ---- */
 .prog-row{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem}
 .pbar{flex:1;height:4px;background:var(--bg2);border-radius:2px;overflow:hidden}
 .pbar-f{height:100%;background:var(--fg);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
-.prog-lbl{font-size:12px;color:var(--fg3);white-space:nowrap;min-width:40px;text-align:right}
+.prog-lbl{font-size:12px;color:var(--fg3);white-space:nowrap;min-width:36px;text-align:right}
 
-/* ---- SCROLL ROW ---- */
 .scroll-row{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;margin-bottom:1rem}
 .scroll-row::-webkit-scrollbar{display:none}
-
-/* ---- CAT CHIPS ---- */
 .cat-chip{flex-shrink:0;padding:7px 13px;border-radius:20px;border:1px solid var(--bg3);background:var(--surface);font-size:12px;color:var(--fg2);cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
 .cat-chip.active{color:#fff;border-color:transparent}
 
-/* ---- ITEM ROW ---- */
-.irow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bg2)}
-.irow:last-child{border-bottom:none}
+.art-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--bg2)}
+.art-row:last-child{border-bottom:none}
 .chk{width:21px;height:21px;border-radius:6px;border:1.5px solid var(--bg3);appearance:none;-webkit-appearance:none;cursor:pointer;flex-shrink:0;transition:all .15s}
 .chk:checked{background:var(--fg);border-color:var(--fg)}
-.chk:checked~.iname{text-decoration:line-through;color:var(--fg3)}
-.iname{flex:1;font-size:14px}
-.iqty{font-size:11px;color:var(--fg3);background:var(--bg2);padding:2px 8px;border-radius:20px;white-space:nowrap}
-.low-badge{font-size:10px;color:var(--amber);background:var(--amber-bg);padding:2px 7px;border-radius:10px;margin-left:3px}
-.add-row{display:flex;gap:7px;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--bg2)}
-.add-row input{background:var(--bg2);border:1px solid transparent;border-radius:var(--rad-sm);padding:9px 11px;font-size:13px;color:var(--fg);font-family:inherit;outline:none;transition:border .15s}
-.add-row input:focus{border-color:var(--bg3)}
-.add-row .ai{flex:1;min-width:0}
-.add-row .aq{flex:0 0 48px;text-align:center}
+.art-info{flex:1;min-width:0}
+.art-name{font-size:14px;font-weight:500}
+.art-name.done{text-decoration:line-through;color:var(--fg3)}
+.art-meta{display:flex;align-items:center;gap:6px;margin-top:3px;flex-wrap:wrap}
+.low-pill{font-size:11px;color:var(--amber);background:var(--amber-bg);padding:2px 8px;border-radius:20px}
+.out-pill{font-size:11px;color:var(--red);background:var(--red-bg);padding:2px 8px;border-radius:20px}
+.art-controls{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.s-btn{width:26px;height:26px;border-radius:50%;border:1px solid var(--bg3);background:var(--surface);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--fg2);font-family:inherit}
+.s-val{font-size:13px;font-weight:600;min-width:18px;text-align:center}
 
-/* ---- STOCK ---- */
-.srow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bg2)}
-.srow:last-child{border-bottom:none}
-.sname{flex:1}
-.sn-title{font-size:13px;font-weight:500}
-.sn-sub{font-size:11px;color:var(--fg3)}
-.s-ctrl{display:flex;align-items:center;gap:7px}
-.s-n{font-size:14px;font-weight:600;min-width:22px;text-align:center}
-.s-btn{width:28px;height:28px;border-radius:50%;border:1px solid var(--bg3);background:var(--surface);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--fg2);font-family:inherit}
+.toggle-add{background:none;border:1px dashed var(--bg3);border-radius:var(--rad-sm);padding:10px 14px;font-size:13px;color:var(--fg3);cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;width:100%;margin-top:.5rem;justify-content:center;transition:all .15s}
+.toggle-add:hover{background:var(--bg2);color:var(--fg2)}
+.add-panel{background:var(--bg2);border-radius:var(--rad-sm);padding:.85rem;margin-top:.75rem;display:none;flex-direction:column;gap:8px}
+.status-row{display:flex;gap:7px}
+.status-chip{flex:1;padding:7px 4px;border-radius:var(--rad-xs);border:1px solid var(--bg3);background:var(--surface);font-size:11px;color:var(--fg3);cursor:pointer;font-family:inherit;text-align:center;transition:all .15s}
+.status-chip.sel-ok{background:var(--green-bg);border-color:var(--green);color:var(--green);font-weight:500}
+.status-chip.sel-low{background:var(--amber-bg);border-color:var(--amber);color:var(--amber);font-weight:500}
+.status-chip.sel-out{background:var(--red-bg);border-color:var(--red);color:var(--red);font-weight:500}
 
-/* ---- DAY CHIPS ---- */
 .day-chip{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 13px;border-radius:var(--rad-sm);border:1px solid var(--bg3);background:var(--surface);cursor:pointer;transition:all .15s;min-width:56px}
 .day-chip.active{background:var(--fg);border-color:var(--fg)}
 .dc-name{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3)}
@@ -117,7 +101,6 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
 .day-chip.is-today .dc-date{color:var(--blue)}
 .day-chip.active.is-today .dc-date{color:#fff}
 
-/* ---- EVENT ROW ---- */
 .evrow{display:flex;align-items:flex-start;gap:11px;padding:11px 0;border-bottom:1px solid var(--bg2)}
 .evrow:last-child{border-bottom:none}
 .ev-time{font-size:11px;color:var(--fg3);min-width:46px;padding-top:2px;line-height:1.5}
@@ -129,19 +112,17 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
 .tag-recur{background:var(--bg2);color:var(--fg3)}
 .tag-remind{background:var(--blue-bg);color:var(--blue)}
 
-/* ---- TASKS ---- */
 .trow{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--bg2)}
 .trow:last-child{border-bottom:none}
 .tchk{width:21px;height:21px;border-radius:50%;border:1.5px solid var(--bg3);appearance:none;-webkit-appearance:none;cursor:pointer;flex-shrink:0;margin-top:2px;transition:all .15s}
 .tchk:checked{background:var(--green);border-color:var(--green)}
-.tchk:checked~.tbody .ttitle{text-decoration:line-through;color:var(--fg3)}
 .tbody{flex:1;min-width:0}
 .ttitle{font-size:14px;font-weight:500}
+.ttitle.done{text-decoration:line-through;color:var(--fg3)}
 .tdue{font-size:11px;margin-top:3px}
 .tdue.late{color:var(--red)}.tdue.soon{color:var(--amber)}.tdue.ok{color:var(--fg3)}
 .pdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
 
-/* ---- REMINDERS ---- */
 .remrow{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid var(--bg2)}
 .remrow:last-child{border-bottom:none}
 .rem-ico{font-size:22px;flex-shrink:0}
@@ -154,21 +135,18 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
 .toggle::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 .toggle.on::after{transform:translateX(18px)}
 
-/* ---- CALENDAR ---- */
 .month-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
-.month-lbl{font-size:16px;font-weight:600;color:var(--fg)}
+.month-lbl{font-size:16px;font-weight:600}
 .marr{background:var(--bg2);border:none;width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:18px;color:var(--fg);display:flex;align-items:center;justify-content:center;font-family:inherit}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
 .cdh{text-align:center;font-size:10px;font-weight:600;color:var(--fg3);padding:4px 0;letter-spacing:.05em}
 .cd{text-align:center;font-size:13px;padding:9px 2px;border-radius:9px;cursor:pointer;color:var(--fg);transition:background .1s;position:relative;line-height:1}
 .cd:hover{background:var(--bg2)}
 .cd.today-cal{font-weight:700;color:var(--blue)}
-.cd.selected-cal{background:var(--fg)!important;color:#fff!important}
+.cd.sel-cal{background:var(--fg)!important;color:#fff!important}
 .cd.has-rdv::after{content:'';width:4px;height:4px;border-radius:50%;background:var(--amber-mid);display:block;margin:3px auto 0}
-.cd.selected-cal.has-rdv::after{background:rgba(255,255,255,.7)}
+.cd.sel-cal.has-rdv::after{background:rgba(255,255,255,.7)}
 .cd.empty-cal{cursor:default;color:transparent}
-
-/* ---- RDV ---- */
 .rdv-badge{display:inline-block;background:var(--amber-bg);color:var(--amber);font-size:11px;font-weight:500;padding:3px 9px;border-radius:10px;white-space:nowrap}
 .rdvrow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bg2)}
 .rdvrow:last-child{border-bottom:none}
@@ -176,42 +154,38 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
 .rdv-title{font-size:14px;font-weight:500}
 .rdv-loc{font-size:11px;color:var(--fg3);margin-top:2px}
 
-/* ---- HEALTH ---- */
 .metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
 .mcard{background:var(--surface);border:1px solid var(--bg3);border-radius:var(--rad);padding:1rem;cursor:pointer;transition:all .15s}
-.mcard.sel{border-width:2px}
 .mico{font-size:24px;display:block;margin-bottom:7px}
 .mlabel{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
-.mval{font-size:23px;font-weight:700;letter-spacing:-.5px;line-height:1}
-.munit{font-size:12px;font-weight:400;margin-left:1px}
+.mval{font-size:22px;font-weight:700;letter-spacing:-.5px;line-height:1}
 .mdelta{font-size:11px;margin-top:4px}
 .mdelta.up{color:var(--green)}.mdelta.dn{color:var(--red)}.mdelta.eq{color:var(--fg3)}
 
 .sub-nav{display:flex;background:var(--bg2);border-radius:11px;padding:3px;gap:3px;margin-bottom:1rem}
-.sn{flex:1;padding:8px 4px;border:none;background:transparent;border-radius:9px;font-size:12px;font-weight:400;color:var(--fg3);cursor:pointer;font-family:inherit;transition:all .15s;text-align:center}
+.sub-nav2{display:flex;background:var(--bg2);border-radius:11px;padding:3px;gap:3px;margin-bottom:1rem}
+.sn{flex:1;padding:8px 4px;border:none;background:transparent;border-radius:9px;font-size:11px;font-weight:400;color:var(--fg3);cursor:pointer;font-family:inherit;transition:all .15s;text-align:center}
 .sn.active{background:var(--surface);color:var(--fg);font-weight:500}
 .stab{display:none}.stab.active{display:block}
 
 .chart-wrap{height:110px;margin-bottom:.5rem;position:relative}
 .chart-wrap canvas{width:100%!important;height:100%!important}
-.chart-labels{display:flex;justify-content:space-between}
+.chart-labels{display:flex;justify-content:space-between;margin-bottom:.75rem}
 .chart-lbl{font-size:10px;color:var(--fg3);flex:1;text-align:center}
-
+.log-form{display:flex;gap:8px;padding-top:.75rem;border-top:1px solid var(--bg2);margin-top:.75rem}
+.log-form input{flex:1;background:var(--bg2);border:1px solid transparent;border-radius:var(--rad-sm);padding:10px 12px;font-size:14px;font-weight:500;color:var(--fg);font-family:inherit;outline:none}
+.log-btn{padding:10px 16px;background:var(--fg);color:#fff;border:none;border-radius:var(--rad-sm);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;white-space:nowrap}
 .hist-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bg2)}
 .hist-row:last-child{border-bottom:none}
 .hdate{font-size:11px;color:var(--fg3);min-width:68px}
 .hbar-wrap{flex:1;height:5px;background:var(--bg2);border-radius:3px;overflow:hidden}
 .hbar{height:100%;border-radius:3px}
 .hval{font-size:12px;font-weight:500;min-width:58px;text-align:right}
-.log-form{display:flex;gap:8px;padding-top:.75rem;border-top:1px solid var(--bg2);margin-top:.75rem}
-.log-form input{flex:1;background:var(--bg2);border:1px solid transparent;border-radius:var(--rad-sm);padding:10px 12px;font-size:14px;font-weight:500;color:var(--fg);font-family:inherit;outline:none}
-.log-btn{padding:10px 16px;background:var(--fg);color:#fff;border:none;border-radius:var(--rad-sm);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;white-space:nowrap}
 
 .sport-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:.75rem}
 .sport-chip{padding:10px;border:1px solid var(--bg3);border-radius:var(--rad-sm);background:var(--surface);cursor:pointer;text-align:center;font-size:13px;color:var(--fg2);transition:all .15s;font-family:inherit}
 .sport-chip.on{background:var(--fg);color:#fff;border-color:var(--fg)}
 
-/* ---- WATCH / SIRI ---- */
 .watch-card{background:var(--fg);border-radius:var(--rad);padding:1.25rem;margin-bottom:.75rem;color:#fff}
 .wc-title{font-size:15px;font-weight:500;margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
 .wc-badge{background:rgba(255,255,255,.15);font-size:10px;padding:3px 8px;border-radius:10px;font-weight:400}
@@ -220,23 +194,19 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
 .wnum{background:rgba(255,255,255,.18);width:23px;height:23px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px}
 .wcode{background:rgba(255,255,255,.1);border-radius:8px;padding:10px 13px;font-size:11.5px;font-family:monospace;color:rgba(255,255,255,.85);margin-top:.75rem;line-height:1.7}
 
-/* ---- NOTIF BANNER ---- */
 .notif-banner{background:var(--blue-bg);border-radius:var(--rad-sm);padding:.85rem 1rem;margin-bottom:.75rem;display:flex;gap:10px;align-items:center}
 .notif-text{flex:1;font-size:12px;color:var(--blue);line-height:1.5}
 .notif-btn{padding:7px 14px;background:var(--blue);color:#fff;border:none;border-radius:var(--rad-xs);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;white-space:nowrap}
 
-/* ---- PERIOD SWITCH ---- */
 .period-sw{display:flex;gap:4px;background:var(--bg2);border-radius:8px;padding:3px}
 .psw{padding:4px 11px;border:none;background:transparent;border-radius:6px;font-size:12px;cursor:pointer;color:var(--fg3);font-family:inherit;transition:all .15s}
 .psw.active{background:var(--surface);color:var(--fg);font-weight:500}
-
 .empty{text-align:center;color:var(--fg3);font-size:13px;padding:1.75rem 0}
 </style>
 </head>
 <body>
 <div id="app">
 
-<!-- ======== COURSES ======== -->
 <div id="page-courses" class="page active">
   <div class="page-title">Mes listes</div>
   <div class="page-sub" id="courses-sub">Chargement…</div>
@@ -247,39 +217,45 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
   <div class="scroll-row" id="cat-tabs"></div>
   <div class="card">
     <div id="items-list"></div>
-    <div class="add-row">
-      <input class="ai" type="text" id="new-item" placeholder="Ajouter un article…" onkeydown="if(event.key==='Enter')addItem()"/>
-      <input class="aq" type="number" id="new-qty" value="1" min="1" max="99"/>
-      <button class="icon-btn" onclick="addItem()">+</button>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-label">📦 Suivi des stocks</div>
-    <div id="stock-list"></div>
-    <div class="add-row" style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--bg2)">
-      <input class="ai" type="text" id="new-stock" placeholder="Produit à surveiller…" onkeydown="if(event.key==='Enter')addStock()"/>
-      <select id="new-stock-cat" style="background:var(--bg2);border:1px solid transparent;border-radius:var(--rad-sm);padding:9px 8px;font-size:12px;color:var(--fg);font-family:inherit;outline:none;flex-shrink:0">
-        <option>🧴 Perso</option><option>🧹 Ménage</option><option>🍎 Alim.</option>
-      </select>
-      <button class="icon-btn" onclick="addStock()">+</button>
+    <button class="toggle-add" onclick="toggleAddPanel()">+ Ajouter un article</button>
+    <div id="add-panel" class="add-panel">
+      <input type="text" id="new-item" placeholder="Nom de l'article…" style="background:var(--surface);border:1px solid var(--bg3);border-radius:var(--rad-sm);padding:10px 12px;font-size:14px;color:var(--fg);font-family:inherit;outline:none;width:100%" onkeydown="if(event.key==='Enter')addItem()"/>
+      <div class="frow">
+        <select id="new-cat" style="flex:1;background:var(--surface);border:1px solid var(--bg3);border-radius:var(--rad-sm);padding:10px 10px;font-size:13px;color:var(--fg);font-family:inherit;outline:none;-webkit-appearance:none">
+          <option value="alim">🍎 Alimentaire</option>
+          <option value="legumes">🥦 Légumes</option>
+          <option value="feculents">🌾 Féculents</option>
+          <option value="viandes">🥩 Viandes</option>
+          <option value="laitiers">🥛 Laitiers</option>
+          <option value="menage">🧹 Ménage</option>
+          <option value="perso">🧴 Hygiène</option>
+          <option value="epicerie">🧂 Épicerie</option>
+        </select>
+        <input type="number" id="new-qty" value="1" min="0" max="99" style="flex:0 0 62px;background:var(--surface);border:1px solid var(--bg3);border-radius:var(--rad-sm);padding:10px;font-size:13px;color:var(--fg);font-family:inherit;outline:none;text-align:center"/>
+      </div>
+      <div style="font-size:11px;color:var(--fg3);font-weight:600;letter-spacing:.05em;text-transform:uppercase">Stock à la maison</div>
+      <div class="status-row" id="new-status-row">
+        <button class="status-chip sel-ok" onclick="setNewStatus('ok',this)">✓ En stock</button>
+        <button class="status-chip" onclick="setNewStatus('low',this)">⚠ Bientôt à cours</button>
+        <button class="status-chip" onclick="setNewStatus('out',this)">✕ Épuisé</button>
+      </div>
+      <button class="btn" onclick="addItem()">Ajouter</button>
     </div>
   </div>
 </div>
 
-<!-- ======== PLANNING ======== -->
 <div id="page-planning" class="page">
   <div class="page-title">Planning</div>
-  <div class="page-sub">Gérez vos créneaux, tâches et rappels</div>
+  <div class="page-sub">Créneaux, tâches et rappels</div>
   <div class="notif-banner" id="notif-banner">
-    <div class="notif-text">Activez les notifications pour recevoir vos rappels sur iPhone.</div>
+    <div class="notif-text">Activez les notifications pour recevoir vos rappels.</div>
     <button class="notif-btn" onclick="askNotif()">Activer</button>
   </div>
-  <div class="sub-nav">
+  <div class="sub-nav2">
     <button class="sn active" onclick="showPTab('emploi',this)">Emploi du temps</button>
     <button class="sn" onclick="showPTab('taches',this)">Tâches</button>
     <button class="sn" onclick="showPTab('rappels',this)">Rappels</button>
   </div>
-
   <div id="stab-emploi" class="stab active">
     <div class="scroll-row" id="day-scroll"></div>
     <div class="card"><div id="ev-list"></div></div>
@@ -287,106 +263,66 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
       <div class="card-label">Nouveau créneau</div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <input class="fi" type="text" id="ev-title" placeholder="Titre (ex : Sport, Réunion…)"/>
-        <div class="frow">
-          <input class="fi" type="time" id="ev-start" value="08:00"/>
-          <input class="fi" type="time" id="ev-end" value="09:00"/>
-        </div>
+        <div class="frow"><input class="fi" type="time" id="ev-start" value="08:00"/><input class="fi" type="time" id="ev-end" value="09:00"/></div>
         <div class="frow">
           <select class="fi" id="ev-day"><option>Lun</option><option>Mar</option><option>Mer</option><option>Jeu</option><option>Ven</option><option>Sam</option><option>Dim</option></select>
-          <select class="fi" id="ev-color">
-            <option value="#1a4fa0">● Bleu</option><option value="#2d6a4f">● Vert</option>
-            <option value="#8a5c00">● Ambre</option><option value="#5c3d8f">● Violet</option><option value="#b91c1c">● Rouge</option>
-          </select>
+          <select class="fi" id="ev-color"><option value="#1a4fa0">● Bleu</option><option value="#2d6a4f">● Vert</option><option value="#8a5c00">● Ambre</option><option value="#5c3d8f">● Violet</option><option value="#b91c1c">● Rouge</option></select>
         </div>
         <div class="frow">
-          <select class="fi" id="ev-recur">
-            <option value="none">Pas de récurrence</option>
-            <option value="weekly">Chaque semaine</option>
-            <option value="biweekly">Toutes les 2 sem.</option>
-          </select>
-          <select class="fi" id="ev-remind">
-            <option value="0">Pas de rappel</option><option value="10">10 min avant</option>
-            <option value="30">30 min avant</option><option value="60">1h avant</option>
-          </select>
+          <select class="fi" id="ev-recur"><option value="none">Pas de récurrence</option><option value="weekly">Chaque semaine</option><option value="biweekly">Toutes les 2 sem.</option></select>
+          <select class="fi" id="ev-remind"><option value="0">Pas de rappel</option><option value="10">10 min avant</option><option value="30">30 min avant</option><option value="60">1h avant</option></select>
         </div>
         <input class="fi" type="text" id="ev-note" placeholder="Note (optionnel)"/>
         <button class="btn" onclick="addEvent()">Ajouter au planning</button>
       </div>
     </div>
   </div>
-
   <div id="stab-taches" class="stab">
     <div class="card"><div class="card-label">À faire</div><div id="task-list"></div></div>
     <div class="card">
       <div class="card-label">Nouvelle tâche</div>
       <div style="display:flex;flex-direction:column;gap:8px">
-        <input class="fi" type="text" id="task-title" placeholder="Description de la tâche…"/>
-        <div class="frow">
-          <input class="fi" type="date" id="task-due"/>
-          <select class="fi" id="task-prio"><option value="high">🔴 Urgent</option><option value="med" selected>🟡 Normal</option><option value="low">🟢 Faible</option></select>
-        </div>
-        <div class="frow">
-          <select class="fi" id="task-rem"><option value="">Pas de rappel</option><option value="same">Le jour même</option><option value="before">La veille</option></select>
-          <input class="fi" type="time" id="task-rem-time" value="08:00"/>
-        </div>
+        <input class="fi" type="text" id="task-title" placeholder="Description…"/>
+        <div class="frow"><input class="fi" type="date" id="task-due"/><select class="fi" id="task-prio"><option value="high">🔴 Urgent</option><option value="med" selected>🟡 Normal</option><option value="low">🟢 Faible</option></select></div>
+        <div class="frow"><select class="fi" id="task-rem"><option value="">Pas de rappel</option><option value="same">Le jour même</option><option value="before">La veille</option></select><input class="fi" type="time" id="task-rem-time" value="08:00"/></div>
         <button class="btn" onclick="addTask()">Ajouter la tâche</button>
       </div>
     </div>
   </div>
-
   <div id="stab-rappels" class="stab">
     <div class="card"><div class="card-label">Rappels actifs</div><div id="rem-list"></div></div>
     <div class="card">
       <div class="card-label">Nouveau rappel</div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <input class="fi" type="text" id="rem-title" placeholder="Ex : Prendre médicament…"/>
-        <div class="frow">
-          <input class="fi" type="time" id="rem-time" value="08:00"/>
-          <select class="fi" id="rem-freq"><option value="daily">Chaque jour</option><option value="weekdays">Jours ouvrés</option><option value="weekly">Hebdomadaire</option></select>
-        </div>
-        <select class="fi" id="rem-icon">
-          <option value="💊">💊 Médicament</option><option value="🌿">🌿 Plantes</option>
-          <option value="🏃">🏃 Sport</option><option value="💧">💧 Hydratation</option>
-          <option value="📚">📚 Lecture</option><option value="🔔">🔔 Autre</option>
-        </select>
+        <div class="frow"><input class="fi" type="time" id="rem-time" value="08:00"/><select class="fi" id="rem-freq"><option value="daily">Chaque jour</option><option value="weekdays">Jours ouvrés</option><option value="weekly">Hebdomadaire</option></select></div>
+        <select class="fi" id="rem-icon"><option value="💊">💊 Médicament</option><option value="🌿">🌿 Plantes</option><option value="🏃">🏃 Sport</option><option value="💧">💧 Hydratation</option><option value="📚">📚 Lecture</option><option value="🔔">🔔 Autre</option></select>
         <button class="btn" onclick="addReminder()">Créer le rappel</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ======== RENDEZ-VOUS ======== -->
 <div id="page-rdv" class="page">
   <div class="page-title">Rendez-vous</div>
   <div class="page-sub">Calendrier &amp; agenda personnel</div>
   <div class="card">
-    <div class="month-nav">
-      <button class="marr" onclick="changeMonth(-1)">‹</button>
-      <span class="month-lbl" id="month-lbl"></span>
-      <button class="marr" onclick="changeMonth(1)">›</button>
-    </div>
+    <div class="month-nav"><button class="marr" onclick="changeMonth(-1)">‹</button><span class="month-lbl" id="month-lbl"></span><button class="marr" onclick="changeMonth(1)">›</button></div>
     <div class="cal-grid" id="cal-grid"></div>
   </div>
-  <div class="card">
-    <div class="card-label" id="rdv-day-lbl">Sélectionnez une date</div>
-    <div id="rdv-list"></div>
-  </div>
+  <div class="card"><div class="card-label" id="rdv-day-lbl">Sélectionnez une date</div><div id="rdv-list"></div></div>
   <div class="card">
     <div class="card-label">Nouveau rendez-vous</div>
     <div style="display:flex;flex-direction:column;gap:8px">
-      <input class="fi" type="text" id="rdv-title" placeholder="Titre (ex : Médecin, Dentiste…)"/>
-      <div class="frow">
-        <input class="fi" type="date" id="rdv-date"/>
-        <input class="fi" type="time" id="rdv-time" value="09:00"/>
-      </div>
+      <input class="fi" type="text" id="rdv-title" placeholder="Titre (ex : Médecin…)"/>
+      <div class="frow"><input class="fi" type="date" id="rdv-date"/><input class="fi" type="time" id="rdv-time" value="09:00"/></div>
       <input class="fi" type="text" id="rdv-loc" placeholder="Lieu (optionnel)"/>
       <select class="fi" id="rdv-remind"><option value="0">Pas de rappel</option><option value="30">30 min avant</option><option value="60">1h avant</option><option value="1440">La veille</option></select>
-      <button class="btn" onclick="addRdv()">Enregistrer le rendez-vous</button>
+      <button class="btn" onclick="addRdv()">Enregistrer</button>
     </div>
   </div>
 </div>
 
-<!-- ======== SANTÉ ======== -->
 <div id="page-sante" class="page">
   <div class="page-title">Santé</div>
   <div class="page-sub">Pas · Poids · Sommeil · Sport</div>
@@ -398,53 +334,37 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
     <button class="sn" onclick="showSTab('sport',this)">🏃 Sport</button>
     <button class="sn" onclick="showSTab('watch',this)">⌚ Watch</button>
   </div>
-
   <div id="stab-pas" class="stab active">
     <div class="card">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-        <span style="font-size:14px;font-weight:500">Nombre de pas</span>
-        <div class="period-sw"><button class="psw active" onclick="setPer('pas','week',this)">Sem.</button><button class="psw" onclick="setPer('pas','month',this)">Mois</button></div>
-      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem"><span style="font-size:14px;font-weight:500">Nombre de pas</span><div class="period-sw"><button class="psw active" onclick="setPer('pas','week',this)">Sem.</button><button class="psw" onclick="setPer('pas','month',this)">Mois</button></div></div>
       <div class="chart-wrap"><canvas id="chart-pas"></canvas></div>
       <div class="chart-labels" id="lbl-pas"></div>
       <div class="log-form"><input type="number" id="in-pas" placeholder="Ex : 8 500 pas" min="0"/><button class="log-btn" onclick="logM('pas')">Enregistrer</button></div>
     </div>
     <div class="card"><div class="card-label">Historique</div><div id="hist-pas"></div></div>
   </div>
-
   <div id="stab-poids" class="stab">
     <div class="card">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-        <span style="font-size:14px;font-weight:500">Évolution du poids</span>
-        <div class="period-sw"><button class="psw active" onclick="setPer('poids','week',this)">Sem.</button><button class="psw" onclick="setPer('poids','month',this)">Mois</button></div>
-      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem"><span style="font-size:14px;font-weight:500">Évolution du poids</span><div class="period-sw"><button class="psw active" onclick="setPer('poids','week',this)">Sem.</button><button class="psw" onclick="setPer('poids','month',this)">Mois</button></div></div>
       <div class="chart-wrap"><canvas id="chart-poids"></canvas></div>
       <div class="chart-labels" id="lbl-poids"></div>
       <div class="log-form"><input type="number" id="in-poids" placeholder="Ex : 73.5 kg" step="0.1"/><button class="log-btn" onclick="logM('poids')">Enregistrer</button></div>
     </div>
   </div>
-
   <div id="stab-sommeil" class="stab">
     <div class="card">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-        <span style="font-size:14px;font-weight:500">Durée du sommeil</span>
-        <div class="period-sw"><button class="psw active" onclick="setPer('sommeil','week',this)">Sem.</button><button class="psw" onclick="setPer('sommeil','month',this)">Mois</button></div>
-      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem"><span style="font-size:14px;font-weight:500">Durée du sommeil</span><div class="period-sw"><button class="psw active" onclick="setPer('sommeil','week',this)">Sem.</button><button class="psw" onclick="setPer('sommeil','month',this)">Mois</button></div></div>
       <div class="chart-wrap"><canvas id="chart-sommeil"></canvas></div>
       <div class="chart-labels" id="lbl-sommeil"></div>
       <div class="log-form"><input type="number" id="in-sommeil" placeholder="Heures (ex : 7.5)" step="0.25"/><button class="log-btn" onclick="logM('sommeil')">Enregistrer</button></div>
     </div>
   </div>
-
   <div id="stab-sport" class="stab">
     <div class="card">
       <div class="card-label">Ajouter une séance</div>
       <div class="sport-grid" id="sport-grid"></div>
       <div style="display:flex;flex-direction:column;gap:8px">
-        <div class="frow">
-          <input class="fi" type="number" id="sp-dur" placeholder="Durée (min)" min="1"/>
-          <input class="fi" type="number" id="sp-kcal" placeholder="Calories (optionnel)"/>
-        </div>
+        <div class="frow"><input class="fi" type="number" id="sp-dur" placeholder="Durée (min)"/><input class="fi" type="number" id="sp-kcal" placeholder="Calories (optionnel)"/></div>
         <input class="fi" type="date" id="sp-date"/>
         <input class="fi" type="text" id="sp-note" placeholder="Note (optionnel)"/>
         <button class="btn" onclick="addSport()">Enregistrer la séance</button>
@@ -452,22 +372,20 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
     </div>
     <div class="card"><div class="card-label">Séances récentes</div><div id="sport-hist"></div></div>
   </div>
-
   <div id="stab-watch" class="stab">
     <div class="watch-card">
       <div class="wc-title">⌚ Connexion Apple Watch <span class="wc-badge">Raccourcis iOS</span></div>
-      <div class="wc-desc">Ton Apple Watch enregistre automatiquement tes pas et ton sommeil dans l'app Santé. Voici comment les importer ici chaque matin, gratuitement et automatiquement.</div>
-      <div class="wstep"><div class="wnum">1</div><span>Ouvre l'app <strong>Raccourcis</strong> sur ton iPhone 17</span></div>
-      <div class="wstep"><div class="wnum">2</div><span>Crée une <strong>Automatisation personnelle</strong> → déclencheur : <strong>Heure du jour</strong> → 8h00</span></div>
-      <div class="wstep"><div class="wnum">3</div><span>Ajoute l'action <strong>"Obtenir les statistiques de santé"</strong> → type : Pas → période : Hier</span></div>
-      <div class="wstep"><div class="wnum">4</div><span>Ajoute une 2ème action pour le sommeil de la même façon</span></div>
-      <div class="wstep"><div class="wnum">5</div><span>Ajoute l'action <strong>"Ouvrir l'URL"</strong> avec le lien ci-dessous :</span></div>
-      <div class="wcode">monappli://import?pas=[Résultat Pas]&sommeil=[Résultat Sommeil]</div>
-      <div class="wc-desc" style="margin-top:.75rem;font-size:11.5px">En activant l'option <strong>"Exécuter automatiquement"</strong>, le raccourci tourne chaque matin sans aucune action de ta part.</div>
+      <div class="wc-desc">Ton Apple Watch enregistre automatiquement tes pas et ton sommeil dans l'app Santé. Voici comment les importer ici chaque matin.</div>
+      <div class="wstep"><div class="wnum">1</div><span>Ouvre <strong>Raccourcis</strong> → Automatisation → +</span></div>
+      <div class="wstep"><div class="wnum">2</div><span>Déclencheur : <strong>Heure du jour</strong> → 10h00</span></div>
+      <div class="wstep"><div class="wnum">3</div><span>Action : <strong>"Obtenir des échantillons de santé"</strong> → Steps → Hier</span></div>
+      <div class="wstep"><div class="wnum">4</div><span>Même chose pour le <strong>Sommeil</strong></span></div>
+      <div class="wstep"><div class="wnum">5</div><span>Action : <strong>"Ouvrir URL"</strong> →</span></div>
+      <div class="wcode">https://tortelmatthias42-gif.github.io/monappli/</div>
     </div>
     <div class="card">
-      <div class="card-label">Import manuel depuis l'app Santé</div>
-      <div style="font-size:13px;color:var(--fg2);line-height:1.65;margin-bottom:1rem">Ouvre l'app <strong>Santé</strong> sur ton iPhone → Résumé → copie tes pas et heures de sommeil ici.</div>
+      <div class="card-label">Import manuel</div>
+      <div style="font-size:13px;color:var(--fg2);line-height:1.65;margin-bottom:1rem">Ouvre l'app <strong>Santé</strong> sur ton iPhone et copie tes données ici.</div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <input class="fi" type="number" id="w-pas" placeholder="Nombre de pas du jour"/>
         <input class="fi" type="number" id="w-som" placeholder="Heures de sommeil (ex : 7.5)" step="0.25"/>
@@ -477,7 +395,6 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
   </div>
 </div>
 
-<!-- ======== BOTTOM NAV ======== -->
 <nav class="bottom-nav">
   <button class="nav-item active" onclick="showPage('courses',this)"><span class="nav-ico">🛒</span>Courses</button>
   <button class="nav-item" onclick="showPage('planning',this)"><span class="nav-ico">📋</span>Planning</button>
@@ -488,17 +405,16 @@ html,body{height:100%;background:var(--bg);color:var(--fg);overflow-x:hidden}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script>
-// ===================== STATE =====================
 const today=new Date();
-let nid=200;
-let notifOK=false;
+let nid=200,notifOK=false;
 let selDay=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'][(today.getDay()+6)%7];
 let calYear=today.getFullYear(),calMonth=today.getMonth(),selDate=null;
-let activeCat='alim';
-let selSport='Course à pied';
+let activeCat='alim',selSport='Course à pied',newStatus='ok';
 let hPeriods={pas:'week',poids:'week',sommeil:'week'};
 const charts={};
-
+const DAYS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+const MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const HCOLORS={pas:{line:'#52b788',fill:'rgba(82,183,136,0.13)'},poids:{line:'#5b8dd9',fill:'rgba(91,141,217,0.13)'},sommeil:{line:'#9b72cf',fill:'rgba(155,114,207,0.13)'}};
 const CATS=[
   {id:'alim',label:'Alimentaire',icon:'🍎',color:'#2d6a4f'},
   {id:'legumes',label:'Légumes',icon:'🥦',color:'#0f6e56'},
@@ -509,23 +425,15 @@ const CATS=[
   {id:'perso',label:'Hygiène',icon:'🧴',color:'#7c3d62'},
   {id:'epicerie',label:'Épicerie',icon:'🧂',color:'#4a4a4a'},
 ];
-const DAYS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
-const MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-const HCOLORS={pas:{line:'#52b788',fill:'rgba(82,183,136,0.13)'},poids:{line:'#5b8dd9',fill:'rgba(91,141,217,0.13)'},sommeil:{line:'#9b72cf',fill:'rgba(155,114,207,0.13)'}};
 
 let items=[
-  {id:1,name:'Bananes',qty:3,cat:'alim',done:false},
-  {id:2,name:'Tomates',qty:4,cat:'legumes',done:false},
-  {id:3,name:'Riz basmati',qty:1,cat:'feculents',done:false},
-  {id:4,name:'Poulet',qty:1,cat:'viandes',done:false},
-  {id:5,name:'Yaourts',qty:6,cat:'laitiers',done:false},
-  {id:6,name:'Lessive',qty:1,cat:'menage',done:false},
-  {id:7,name:'Dentifrice',qty:2,cat:'perso',done:false},
-  {id:8,name:'Shampoing',qty:1,cat:'perso',done:false},
-];
-let stocks=[
-  {id:1,name:'Dentifrice',qty:1,cat:'🧴 Perso'},{id:2,name:'Lessive',qty:2,cat:'🧹 Ménage'},
-  {id:3,name:'Gel douche',qty:1,cat:'🧴 Perso'},{id:4,name:'Liquide vaisselle',qty:1,cat:'🧹 Ménage'},
+  {id:1,name:'Bananes',qty:3,cat:'alim',done:false,status:'ok'},
+  {id:2,name:'Tomates',qty:4,cat:'legumes',done:false,status:'ok'},
+  {id:3,name:'Riz basmati',qty:1,cat:'feculents',done:false,status:'low'},
+  {id:4,name:'Yaourts',qty:6,cat:'laitiers',done:false,status:'ok'},
+  {id:5,name:'Lessive',qty:1,cat:'menage',done:false,status:'low'},
+  {id:6,name:'Dentifrice',qty:2,cat:'perso',done:false,status:'out'},
+  {id:7,name:'Shampoing',qty:1,cat:'perso',done:false,status:'ok'},
 ];
 let events=[
   {id:1,day:'Lun',start:'07:00',end:'08:00',title:'Sport',note:'',color:'#2d6a4f',recur:'weekly',remind:30},
@@ -536,7 +444,6 @@ let events=[
 let tasks=[
   {id:1,title:'Appeler le plombier',due:'2026-04-08',prio:'high',done:false,rem:'before',remT:'08:00'},
   {id:2,title:'Renouveler ordonnance',due:'2026-04-15',prio:'med',done:false,rem:'same',remT:'09:00'},
-  {id:3,title:'Commander filtre piscine',due:'2026-04-25',prio:'low',done:false,rem:'',remT:''},
 ];
 let reminders=[
   {id:1,title:'Prendre vitamine D',time:'08:00',freq:'daily',icon:'💊',on:true},
@@ -546,29 +453,23 @@ let rdvs=[
   {id:1,date:'2026-04-10',time:'10:30',title:'Médecin généraliste',loc:'Cabinet Dr. Martin',remind:60},
   {id:2,date:'2026-04-22',time:'14:00',title:'Dentiste',loc:'Clinique Océan Indien',remind:1440},
 ];
-let sports=[
-  {id:1,type:'Course à pied',dur:35,kcal:280,date:'2026-04-04',note:'Bord de mer'},
-  {id:2,type:'Musculation',dur:50,kcal:220,date:'2026-04-02',note:''},
-  {id:3,type:'Vélo',dur:45,kcal:310,date:'2026-03-31',note:''},
-];
+let sports=[];
 const hdata={
-  pas:{week:[6600,7800,5200,9100,8300,6700,7420],month:Array.from({length:28},(_,i)=>Math.round(5500+Math.random()*4500))},
-  poids:{week:[73.8,73.6,73.7,73.5,73.4,73.3,73.2],month:Array.from({length:28},(_,i)=>+(74.5-i*0.04+(Math.random()-.5)*.4).toFixed(1))},
-  sommeil:{week:[7.5,6.0,8.0,7.0,6.5,8.5,7.25],month:Array.from({length:28},(_,i)=>+(6+Math.random()*2.5).toFixed(2))},
+  pas:{week:[0,0,0,0,0,0,0],month:Array(28).fill(0)},
+  poids:{week:[0,0,0,0,0,0,0],month:Array(28).fill(0)},
+  sommeil:{week:[0,0,0,0,0,0,0],month:Array(28).fill(0)},
 };
 
-// ===================== NOTIFICATIONS =====================
 function askNotif(){
-  if(!('Notification' in window)){alert('Les notifications ne sont pas supportées.\nSur iPhone, ouvrez cette page dans Safari.');return;}
+  if(!('Notification' in window)){alert('Ouvrez cette page dans Safari sur iPhone.');return;}
   Notification.requestPermission().then(p=>{
     if(p==='granted'){notifOK=true;document.getElementById('notif-banner').style.display='none';scheduleAll();}
-    else alert('Notifications refusées.\nActivez-les dans : Réglages > Safari > Notifications.');
+    else alert('Activez dans : Réglages > Safari > Notifications.');
   });
 }
 function sendNotif(title,body,delay){
   if(!notifOK||Notification.permission!=='granted')return;
-  const fn=()=>new Notification(title,{body,icon:''});
-  delay>0?setTimeout(fn,delay):fn();
+  const fn=()=>new Notification(title,{body});delay>0?setTimeout(fn,delay):fn();
 }
 function scheduleAll(){
   reminders.filter(r=>r.on).forEach(r=>{
@@ -579,32 +480,36 @@ function scheduleAll(){
   });
 }
 
-// ===================== NAV =====================
 function showPage(name,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
-  btn.classList.add('active');
+  document.getElementById('page-'+name).classList.add('active');btn.classList.add('active');
   if(name==='planning'){renderDayScroll();renderEvents();}
-  if(name==='rdv'){renderCal();}
+  if(name==='rdv')renderCal();
   if(name==='sante'){renderMetrics();drawChart('pas');}
 }
 function showPTab(name,btn){
   document.querySelectorAll('#page-planning .stab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('#page-planning .sn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('stab-'+name).classList.add('active');
-  btn.classList.add('active');
+  document.getElementById('stab-'+name).classList.add('active');btn.classList.add('active');
 }
 function showSTab(name,btn){
   document.querySelectorAll('#page-sante .stab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('#page-sante .sn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('stab-'+name).classList.add('active');
-  btn.classList.add('active');
+  document.getElementById('stab-'+name).classList.add('active');btn.classList.add('active');
   if(['pas','poids','sommeil'].includes(name))drawChart(name);
   if(name==='sport')renderSports();
 }
 
-// ===================== COURSES =====================
+function toggleAddPanel(){
+  const p=document.getElementById('add-panel');
+  p.style.display=p.style.display==='flex'?'none':'flex';
+}
+function setNewStatus(s,btn){
+  newStatus=s;
+  document.querySelectorAll('#new-status-row .status-chip').forEach(b=>b.className='status-chip');
+  btn.classList.add('sel-'+s);
+}
 function renderCatTabs(){
   document.getElementById('cat-tabs').innerHTML=CATS.map(c=>{
     const n=items.filter(i=>i.cat===c.id).length;
@@ -616,13 +521,26 @@ function setActiveCat(id){activeCat=id;renderCatTabs();renderItems();}
 function renderItems(){
   const list=items.filter(i=>i.cat===activeCat);
   const el=document.getElementById('items-list');
-  el.innerHTML=list.length?list.map(i=>`
-    <div class="irow">
+  if(!list.length){el.innerHTML='<div class="empty">Aucun article — appuyez sur + pour ajouter</div>';updateProgress();return;}
+  el.innerHTML=list.map(i=>{
+    const badge=i.status==='low'?`<span class="low-pill">⚠ Bientôt à cours</span>`:i.status==='out'?`<span class="out-pill">✕ Épuisé</span>`:'';
+    return `<div class="art-row">
       <input type="checkbox" class="chk" ${i.done?'checked':''} onchange="toggleItem(${i.id})"/>
-      <span class="iname${i.done?' '+'iname-done':''}" style="${i.done?'text-decoration:line-through;color:var(--fg3)':''}">${i.name}</span>
-      <span class="iqty">×${i.qty}</span>
-      <button class="del" onclick="delItem(${i.id})">×</button>
-    </div>`).join(''):'<div class="empty">Aucun article dans cette catégorie</div>';
+      <div class="art-info">
+        <div class="art-name${i.done?' done':''}">${i.name}</div>
+        <div class="art-meta">${badge}</div>
+      </div>
+      <div class="art-controls">
+        <button class="s-btn" onclick="chgQty(${i.id},-1)">−</button>
+        <span class="s-val">${i.qty}</span>
+        <button class="s-btn" onclick="chgQty(${i.id},1)">+</button>
+        <button class="del" onclick="delItem(${i.id})">×</button>
+      </div>
+    </div>`;
+  }).join('');
+  updateProgress();
+}
+function updateProgress(){
   const done=items.filter(x=>x.done).length,total=items.length;
   const pct=total?Math.round(done/total*100):0;
   document.getElementById('pbar').style.width=pct+'%';
@@ -630,54 +548,33 @@ function renderItems(){
   document.getElementById('courses-sub').textContent=done+' / '+total+' article'+(total>1?'s':'')+(done===total&&total>0?' ✓':'');
 }
 function toggleItem(id){const i=items.find(x=>x.id===id);if(i)i.done=!i.done;renderItems();}
+function chgQty(id,d){const i=items.find(x=>x.id===id);if(i)i.qty=Math.max(0,i.qty+d);renderItems();}
 function delItem(id){items=items.filter(x=>x.id!==id);renderItems();renderCatTabs();}
 function addItem(){
   const v=document.getElementById('new-item').value.trim();if(!v)return;
-  items.push({id:nid++,name:v,qty:+document.getElementById('new-qty').value||1,cat:activeCat,done:false});
-  document.getElementById('new-item').value='';renderItems();renderCatTabs();
-}
-function renderStocks(){
-  const el=document.getElementById('stock-list');
-  el.innerHTML=stocks.length?stocks.map(s=>`
-    <div class="srow">
-      <div class="sname"><div class="sn-title">${s.name}</div><div class="sn-sub">${s.cat}</div></div>
-      ${s.qty<=1?'<span class="low-badge">⚠ Stock bas</span>':''}
-      <div class="s-ctrl">
-        <button class="s-btn" onclick="chgStock(${s.id},-1)">−</button>
-        <span class="s-n">${s.qty}</span>
-        <button class="s-btn" onclick="chgStock(${s.id},1)">+</button>
-      </div>
-      <button class="del" onclick="delStock(${s.id})">×</button>
-    </div>`).join(''):'<div class="empty">Aucun produit suivi</div>';
-}
-function chgStock(id,d){const s=stocks.find(x=>x.id===id);if(s)s.qty=Math.max(0,s.qty+d);renderStocks();}
-function delStock(id){stocks=stocks.filter(x=>x.id!==id);renderStocks();}
-function addStock(){
-  const v=document.getElementById('new-stock').value.trim();if(!v)return;
-  stocks.push({id:nid++,name:v,qty:1,cat:document.getElementById('new-stock-cat').value});
-  document.getElementById('new-stock').value='';renderStocks();
+  const cat=document.getElementById('new-cat').value;
+  items.push({id:nid++,name:v,qty:+document.getElementById('new-qty').value||1,cat,done:false,status:newStatus});
+  document.getElementById('new-item').value='';
+  document.getElementById('new-qty').value='1';
+  newStatus='ok';
+  document.querySelectorAll('#new-status-row .status-chip').forEach((b,i)=>{b.className='status-chip';if(i===0)b.classList.add('sel-ok');});
+  if(cat!==activeCat){setActiveCat(cat);}else{renderItems();renderCatTabs();}
 }
 
-// ===================== PLANNING =====================
 function renderDayScroll(){
-  const scroll=document.getElementById('day-scroll');
   const mon=new Date(today);mon.setDate(today.getDate()-((today.getDay()+6)%7));
-  scroll.innerHTML=DAYS.map((d,i)=>{
+  document.getElementById('day-scroll').innerHTML=DAYS.map((d,i)=>{
     const dt=new Date(mon);dt.setDate(mon.getDate()+i);
     const isT=dt.toDateString()===today.toDateString();
     const hasEv=events.some(e=>e.day===d);
     return `<div class="day-chip${d===selDay?' active':''}${isT?' is-today':''}${hasEv?' has-ev':''}" onclick="selDay='${d}';renderDayScroll();renderEvents()">
-      <span class="dc-name">${d}</span>
-      <span class="dc-date">${dt.getDate()}</span>
-      <div class="dc-dot"></div>
-    </div>`;
+      <span class="dc-name">${d}</span><span class="dc-date">${dt.getDate()}</span><div class="dc-dot"></div></div>`;
   }).join('');
 }
 function renderEvents(){
   const evs=events.filter(e=>e.day===selDay).sort((a,b)=>a.start.localeCompare(b.start));
-  const el=document.getElementById('ev-list');
   const fmap={weekly:'🔁 Hebdo',biweekly:'🔁 2 sem.'};
-  el.innerHTML=evs.length?evs.map(e=>`
+  document.getElementById('ev-list').innerHTML=evs.length?evs.map(e=>`
     <div class="evrow">
       <span class="ev-time">${e.start}<br>${e.end}</span>
       <div class="ev-bar" style="background:${e.color}"></div>
@@ -702,16 +599,15 @@ function addEvent(){
   renderDayScroll();renderEvents();
 }
 function renderTasks(){
-  const el=document.getElementById('task-list');
   const pColors={high:'#b91c1c',med:'#8a5c00',low:'#2d6a4f'};
   const sorted=[...tasks.filter(t=>!t.done),...tasks.filter(t=>t.done)];
-  el.innerHTML=sorted.length?sorted.map(t=>{
+  document.getElementById('task-list').innerHTML=sorted.length?sorted.map(t=>{
     let dc='ok',dt='';
-    if(t.due){const diff=Math.ceil((new Date(t.due)-today)/864e5);dt=diff<0?'En retard de '+Math.abs(diff)+' j':diff===0?'Aujourd\'hui':diff===1?'Demain':'Dans '+diff+' jours';dc=diff<0?'late':diff<=2?'soon':'ok';}
+    if(t.due){const diff=Math.ceil((new Date(t.due)-today)/864e5);dt=diff<0?'En retard de '+Math.abs(diff)+' j':diff===0?"Aujourd'hui":diff===1?'Demain':'Dans '+diff+' jours';dc=diff<0?'late':diff<=2?'soon':'ok';}
     return `<div class="trow">
       <input type="checkbox" class="tchk" ${t.done?'checked':''} onchange="toggleTask(${t.id})"/>
       <div class="tbody">
-        <div class="ttitle" style="${t.done?'text-decoration:line-through;color:var(--fg3)':''}">${t.title}</div>
+        <div class="ttitle${t.done?' done':''}">${t.title}</div>
         ${t.due?`<div class="tdue ${dc}">📅 ${dt}${t.rem?' · 🔔':''}</div>`:''}
       </div>
       <div class="pdot" style="background:${pColors[t.prio]}"></div>
@@ -735,15 +631,11 @@ function addTask(){
   renderTasks();
 }
 function renderReminders(){
-  const el=document.getElementById('rem-list');
   const fl={daily:'Tous les jours',weekdays:'Jours ouvrés',weekly:'Hebdomadaire'};
-  el.innerHTML=reminders.length?reminders.map(r=>`
+  document.getElementById('rem-list').innerHTML=reminders.length?reminders.map(r=>`
     <div class="remrow">
       <span class="rem-ico">${r.icon}</span>
-      <div class="rem-body">
-        <div class="rem-title">${r.title}</div>
-        <div class="rem-sub">⏰ ${r.time} <span class="freq-tag">${fl[r.freq]||r.freq}</span></div>
-      </div>
+      <div class="rem-body"><div class="rem-title">${r.title}</div><div class="rem-sub">⏰ ${r.time} <span class="freq-tag">${fl[r.freq]}</span></div></div>
       <button class="toggle${r.on?' on':''}" onclick="toggleRem(${r.id})"></button>
       <button class="del" onclick="delRem(${r.id})">×</button>
     </div>`).join(''):'<div class="empty">Aucun rappel configuré</div>';
@@ -757,7 +649,6 @@ function addReminder(){
   if(notifOK)scheduleAll();renderReminders();
 }
 
-// ===================== RENDEZ-VOUS =====================
 function renderCal(){
   document.getElementById('month-lbl').textContent=MONTHS[calMonth]+' '+calYear;
   const first=new Date(calYear,calMonth,1).getDay();
@@ -770,7 +661,7 @@ function renderCal(){
     const ds=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
     const isT=today.getFullYear()===calYear&&today.getMonth()===calMonth&&today.getDate()===d;
     const isSel=selDate===ds;const hasR=rdvs.some(r=>r.date===ds);
-    html+=`<div class="cd${isT?' today-cal':''}${isSel?' selected-cal':''}${hasR?' has-rdv':''}" onclick="selectDate('${ds}')">${d}</div>`;
+    html+=`<div class="cd${isT?' today-cal':''}${isSel?' sel-cal':''}${hasR?' has-rdv':''}" onclick="selectDate('${ds}')">${d}</div>`;
   }
   document.getElementById('cal-grid').innerHTML=html;
   if(selDate)renderRdvList();
@@ -788,7 +679,7 @@ function renderRdvList(){
       <div class="rdv-body">
         <div class="rdv-title">${r.title}</div>
         ${r.loc?`<div class="rdv-loc">📍 ${r.loc}</div>`:''}
-        ${r.remind>0?`<div class="rdv-loc">🔔 Rappel ${r.remind>=1440?'la veille':r.remind+' min avant'}</div>`:''}
+        ${r.remind>0?`<div class="rdv-loc">🔔 ${r.remind>=1440?'La veille':r.remind+' min avant'}</div>`:''}
       </div>
       <button class="del" onclick="delRdv(${r.id})">×</button>
     </div>`).join(''):'<div class="empty">Aucun rendez-vous ce jour</div>';
@@ -808,34 +699,32 @@ function addRdv(){
   renderCal();
 }
 
-// ===================== SANTÉ =====================
 const SPORT_TYPES=[{n:'Course à pied',i:'🏃'},{n:'Musculation',i:'💪'},{n:'Vélo',i:'🚴'},{n:'Natation',i:'🏊'},{n:'Yoga',i:'🧘'},{n:'Autre',i:'⚡'}];
 function initSportGrid(){
   document.getElementById('sport-grid').innerHTML=SPORT_TYPES.map(s=>`<button class="sport-chip${s.n===selSport?' on':''}" onclick="setSport('${s.n}',this)">${s.i} ${s.n}</button>`).join('');
 }
 function setSport(n,btn){selSport=n;document.querySelectorAll('.sport-chip').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
-
 function renderMetrics(){
   const pas=hdata.pas.week[6],prevPas=hdata.pas.week[5];
   const pct=prevPas?Math.round((pas-prevPas)/prevPas*100):0;
   const poids=hdata.poids.week[6];
-  const som=hdata.sommeil.week[6];const sh=Math.floor(som),sm=Math.round((som-sh)*60);
-  const spw=sports.filter(s=>{const diff=(today-new Date(s.date))/864e5;return diff<7;}).length;
+  const som=hdata.sommeil.week[6];
+  const sh=Math.floor(som),sm=Math.round((som-sh)*60);
+  const spw=sports.filter(s=>(today-new Date(s.date))/864e5<7).length;
   const defs=[
-    {id:'pas',ico:'👣',label:'Pas aujourd\'hui',val:pas.toLocaleString('fr-FR'),delta:(pct>=0?'↑ +':'↓ ')+Math.abs(pct)+'% vs hier',cls:pct>=0?'up':'dn',color:'#2d6a4f'},
-    {id:'poids',ico:'⚖️',label:'Poids',val:poids+'<span style="font-size:12px;font-weight:400"> kg</span>',delta:'↓ objectif en cours',cls:'eq',color:'#1a4fa0'},
-    {id:'sommeil',ico:'🌙',label:'Sommeil',val:sh+'h'+String(sm).padStart(2,'0'),delta:som>=8?'↑ objectif atteint':'↔ objectif : 8h',cls:som>=8?'up':'eq',color:'#5c3d8f'},
-    {id:'sport',ico:'🏃',label:'Sport / sem.',val:spw+'<span style="font-size:12px;font-weight:400"> séances</span>',delta:spw>=3?'↑ objectif atteint':'→ objectif : 3/sem',cls:spw>=3?'up':'eq',color:'#8a5c00'},
+    {id:'pas',ico:'👣',label:"Pas aujourd'hui",val:pas>0?pas.toLocaleString('fr-FR'):'—',delta:pas>0?(pct>=0?'↑ +':'↓ ')+Math.abs(pct)+'% vs hier':'Aucune donnée',cls:pas>0?(pct>=0?'up':'dn'):'eq',color:'#2d6a4f'},
+    {id:'poids',ico:'⚖️',label:'Poids',val:poids>0?poids+' kg':'—',delta:poids>0?'Dernière mesure':'Aucune donnée',cls:'eq',color:'#1a4fa0'},
+    {id:'sommeil',ico:'🌙',label:'Sommeil',val:som>0?sh+'h'+String(sm).padStart(2,'0'):'—',delta:som>0?(som>=8?'↑ Objectif atteint':'↔ Objectif : 8h'):'Aucune donnée',cls:som>0?(som>=8?'up':'eq'):'eq',color:'#5c3d8f'},
+    {id:'sport',ico:'🏃',label:'Sport / sem.',val:spw>0?spw+' séance'+(spw>1?'s':''):'—',delta:spw>0?(spw>=3?'↑ Objectif atteint':'→ Objectif : 3/sem'):'Aucune séance',cls:spw>=3?'up':'eq',color:'#8a5c00'},
   ];
-  document.getElementById('metrics-grid').innerHTML=defs.map(m=>`
-    <div class="mcard" onclick="showSTab('${m.id}',document.querySelectorAll('#page-sante .sn')[${['pas','poids','sommeil','sport'].indexOf(m.id)}])" style="border-color:${m.color}">
+  document.getElementById('metrics-grid').innerHTML=defs.map((m,i)=>`
+    <div class="mcard" onclick="showSTab('${m.id}',document.querySelectorAll('#page-sante .sn')[${i}])" style="border-color:${m.color}">
       <span class="mico">${m.ico}</span>
       <div class="mlabel" style="color:${m.color}">${m.label}</div>
       <div class="mval">${m.val}</div>
       <div class="mdelta ${m.cls}">${m.delta}</div>
     </div>`).join('');
 }
-
 function drawChart(metric){
   const period=hPeriods[metric];
   const vals=hdata[metric][period];
@@ -848,7 +737,7 @@ function drawChart(metric){
   charts[metric]=new Chart(ctx,{
     type:isLine?'line':'bar',
     data:{labels,datasets:[{data:vals,backgroundColor:isLine?HCOLORS[metric].fill:HCOLORS[metric].fill.replace('.13','.5'),borderColor:HCOLORS[metric].line,borderWidth:isLine?2:0,borderRadius:isLine?0:5,fill:isLine,tension:0.4,pointRadius:isLine?3:0,pointBackgroundColor:HCOLORS[metric].line}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const v=c.parsed.y;if(metric==='pas')return v.toLocaleString('fr-FR')+' pas';if(metric==='poids')return v+' kg';const h=Math.floor(v),m=Math.round((v-h)*60);return h+'h'+String(m).padStart(2,'0');}}}},scales:{x:{display:false},y:{display:false,suggestedMin:metric==='poids'?Math.min(...vals)-1:0}}}
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const v=c.parsed.y;if(!v)return 'Aucune donnée';if(metric==='pas')return v.toLocaleString('fr-FR')+' pas';if(metric==='poids')return v+' kg';const h=Math.floor(v),m=Math.round((v-h)*60);return h+'h'+String(m).padStart(2,'0');}}}},scales:{x:{display:false},y:{display:false,suggestedMin:0,suggestedMax:metric==='pas'?10000:metric==='poids'?100:10}}}
   });
   const step=period==='week'?1:4;
   document.getElementById('lbl-'+metric).innerHTML=labels.filter((_,i)=>i%step===0||i===labels.length-1).map(l=>`<span class="chart-lbl">${l}</span>`).join('');
@@ -868,14 +757,16 @@ function logM(metric){
 }
 function renderHistPas(){
   const el=document.getElementById('hist-pas');if(!el)return;
-  const vals=hdata.pas.week.slice().reverse();const max=Math.max(...vals);
-  const mon=new Date(today);
-  el.innerHTML=vals.map((v,i)=>{const d=new Date(mon);d.setDate(today.getDate()-i);return `<div class="hist-row"><span class="hdate">${d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric'})}</span><div class="hbar-wrap"><div class="hbar" style="width:${Math.round(v/max*100)}%;background:#52b788"></div></div><span class="hval">${v.toLocaleString('fr-FR')} pas</span></div>`;}).join('');
+  const vals=hdata.pas.week.slice().reverse();
+  const max=Math.max(...vals)||1;
+  el.innerHTML=vals.map((v,i)=>{
+    const d=new Date(today);d.setDate(today.getDate()-i);
+    return `<div class="hist-row"><span class="hdate">${d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric'})}</span><div class="hbar-wrap"><div class="hbar" style="width:${Math.round(v/max*100)}%;background:#52b788"></div></div><span class="hval">${v>0?v.toLocaleString('fr-FR')+' pas':'—'}</span></div>`;
+  }).join('');
 }
 function renderSports(){
-  const el=document.getElementById('sport-hist');
   const ico={'Course à pied':'🏃',Musculation:'💪','Vélo':'🚴',Natation:'🏊',Yoga:'🧘'};
-  el.innerHTML=sports.length?sports.slice(0,6).map(s=>`
+  document.getElementById('sport-hist').innerHTML=sports.length?sports.slice(0,6).map(s=>`
     <div class="hist-row">
       <span class="hdate">${s.date.split('-').reverse().join('/')}</span>
       <div style="flex:1;display:flex;align-items:center;gap:8px">
@@ -903,12 +794,11 @@ function importWatch(){
   alert('✓ Données importées depuis Apple Watch !');
 }
 
-// ===================== INIT =====================
 if(Notification.permission==='granted'){notifOK=true;document.getElementById('notif-banner').style.display='none';}
 document.getElementById('task-due').value=today.toISOString().split('T')[0];
 document.getElementById('rdv-date').value=today.toISOString().split('T')[0];
 document.getElementById('sp-date').value=today.toISOString().split('T')[0];
-renderCatTabs();renderItems();renderStocks();
+renderCatTabs();renderItems();
 renderTasks();renderReminders();
 renderCal();
 initSportGrid();
